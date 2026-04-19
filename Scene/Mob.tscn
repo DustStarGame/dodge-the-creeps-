@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cdlga2k7pdchr"]
+
+[ext_resource type="Script" uid="uid://dp3iq770b31ic" path="res://Scripts/mob.gd" id="1_5fkij"]
+[ext_resource type="SpriteFrames" uid="uid://c68j32wllxbfq" path="res://animation/Mob.tres" id="1_puecm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_puecm"]
+radius = 32.0
+height = 68.0
+
+[node name="Mob" type="RigidBody2D" unique_id=308016475]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_5fkij")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1429472605]
+scale = Vector2(0.75, 0.75)
+sprite_frames = ExtResource("1_puecm")
+animation = &"fly"
+frame = 1
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=292834679]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_puecm")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1160266609]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
